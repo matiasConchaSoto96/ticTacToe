@@ -1,0 +1,18 @@
+// Mixin de grid
+@mixin grid( $columns, $space) {
+  display: grid;
+  grid-template-columns: repeat($columns, 200px);
+  gap: $space;
+
+  // @media screen and (min-width: 800px) {
+    
+  // }
+}
+
+// Mixin de flex
+@mixin flex( $direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
