@@ -37,7 +37,7 @@ img {
   background-color: #fff;
 }
 
-.figure__container {
+.end-game__container, .figure__container {
   position: absolute;
   top: 0;
   right: 0;
@@ -50,6 +50,10 @@ img {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4666666667);
+}
+.end-game__container {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.4666666667);
 }

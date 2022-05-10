@@ -1,0 +1,17 @@
+@use "../tools/placeholders";
+
+.end-game {
+  &__container {
+    @extend %absolute;
+    width: 100%;
+    background-color: #0007;
+  }
+
+  &__text {
+
+  }
+
+  &__btn {
+    
+  }
+}

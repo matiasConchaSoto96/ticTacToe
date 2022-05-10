@@ -2,6 +2,7 @@
 @use "../layouts/board";
 @use "../components/modal";
 @use "../layouts/figure";
+@use "../layouts/end-game";
 
 h1 {
   text-align: center;
