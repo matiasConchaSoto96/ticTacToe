@@ -6,7 +6,8 @@ const initBoard = () => [
   [null, null, null]
 ];
 
-const figureContainer = document.getElementById("figure__container");
+const htmlFigureContainer = document.getElementById("figure__container");
+const htmlEndGame = document.getElementById("end-game");
 let board = initBoard();
 
 // Variable que indica el jugador que está jugando actualmente
@@ -16,7 +17,7 @@ let currentPlayer = "O";
 let nextMove = true;
 let isCircleOrEx;
 
-// Función que va cambiando al jugador.
+// Función que asigna la figura correcta al jugador actual.
 const circleOrEx = () => {
   if(isCircleOrEx) {
     currentPlayer = "O"
@@ -38,7 +39,19 @@ const setInitialFigure = (e) => {
   }
 };
 
-figureContainer.addEventListener("click", setInitialFigure);
+htmlFigureContainer.addEventListener("click", setInitialFigure);
+
+// Función manejadora que anuncia al ganador y pregunta si quieres jugar de nuevo
+const playAgain = (e) => {
+  if(e.target.matches(".end-game__btn")) {
+    htmlEndGame.classList.add("none");
+    document.getElementById("figure").classList.remove("none");
+    cleanBoard();
+    drawBoard();
+  }
+};
+
+htmlEndGame.addEventListener("click", playAgain);
 
 // Función que verifica si hay un ganador
 const verify = list => {
@@ -100,15 +113,15 @@ const makeMove = (row, col) => {
     if(boardChecked === -1) {
       if(isBoardFull()) {
         nextMove = false;
-        alert("empate"); //fix: anunciar el empate de mejor manera.
-        cleanBoard();
+        document.getElementById("end-game__text").innerHTML = "Empate";
+        htmlEndGame.classList.remove("none");
       } else {
         isCircleOrEx = (isCircleOrEx) ? false : true;
       }
     } else {
       nextMove = false;
-      alert(`Ganó el jugador ${boardChecked}`); //fix: anunciar al ganador de mejor manera
-      cleanBoard();
+      document.getElementById("end-game__text").innerHTML = `Felicidades jugador ${boardChecked} has ganado!!!`;
+      htmlEndGame.classList.remove("none");
     }
   }
 
