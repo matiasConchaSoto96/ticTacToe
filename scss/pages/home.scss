@@ -1,5 +1,7 @@
 @use "../layouts/grid";
 @use "../layouts/board";
+@use "../components/modal";
+@use "../layouts/figure";
 
 h1 {
   text-align: center;

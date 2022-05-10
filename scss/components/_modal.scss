@@ -1,0 +1,5 @@
+@use "../tools/vars" as v;
+
+.modal {
+  background-color: map-get(v.$colors, "white");
+}
