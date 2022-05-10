@@ -6,6 +6,7 @@ const initBoard = () => [
   [null, null, null]
 ];
 
+const figureContainer = document.getElementById("figure__container");
 let board = initBoard();
 
 // Variable que indica el jugador que está jugando actualmente
@@ -13,8 +14,9 @@ let currentPlayer = "O";
 
 // Para qué sirve?
 let nextMove = true;
-let isCircleOrEx = confirm("Primer player, confirm = círculo, cancel = equis");
+let isCircleOrEx;
 
+// Función que va cambiando al jugador.
 const circleOrEx = () => {
   if(isCircleOrEx) {
     currentPlayer = "O"
@@ -24,6 +26,19 @@ const circleOrEx = () => {
 
   return currentPlayer;
 }
+
+// Función manejadora que inicializa la variable isCircleOrEx.
+const setInitialFigure = (e) => {
+  if(e.target.matches(".figure__circle")) {
+    isCircleOrEx = true;
+    document.getElementById("figure").classList.add("none");
+  } else if (e.target.matches(".figure__ex")) {
+    isCircleOrEx = false;
+    document.getElementById("figure").classList.add("none");
+  }
+};
+
+figureContainer.addEventListener("click", setInitialFigure);
 
 // Función que verifica si hay un ganador
 const verify = list => {
@@ -40,7 +55,6 @@ const cleanBoard = () => {
   board.forEach((row, i) => {
     row.forEach((col, j) => {
       board[i][j] = null;
-      // console.table(board);
     });
   });
 }

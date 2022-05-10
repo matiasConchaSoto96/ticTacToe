@@ -1,0 +1,19 @@
+@use "../tools/mixins" as mix;
+@use "../tools/placeholders";
+
+.figure {
+  &__container {
+    @extend %absolute;
+    @include mix.flex(row, center, center);
+    width: 100%;
+    background-color: #0007;
+  }
+
+  &__circle {
+
+  }
+
+  &__ex {
+
+  }
+}
