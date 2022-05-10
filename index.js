@@ -35,6 +35,16 @@ const verify = list => {
 // Función que comprueba si el tablero está lleno
 const isBoardFull = () => board.flat().every(el => el);
 
+// Función que limpia el tablero
+const cleanBoard = () => {
+  board.forEach((row, i) => {
+    row.forEach((col, j) => {
+      board[i][j] = null;
+      // console.table(board);
+    });
+  });
+}
+
 // Función que comprueba el estado del tablero
 const checkBoard = () => {
   // Filas
@@ -67,7 +77,7 @@ const checkBoard = () => {
   return -1;
 };
 
-// Función manejadora que, en caso de ser null, le otorga a la posición el número del jugador actual y en el caso de no haber ni ganador ni empate cambia al jugador actual, también anuncia que hay un ganador para que así el juego termine y al final invoca a la función que dibuja el tablero en el dom. 
+// Función manejadora que, en caso de ser null, le otorga a la posición la figura del jugador actual y en el caso de no haber ni ganador ni empate cambia la figura y le toca al siguiente jugador, también anuncia que hay un ganador para que así el juego termine y al final invoca a la función que dibuja el tablero en el dom. 
 const makeMove = (row, col) => {
   if(!board[row][col]) {
     board[row][col] = circleOrEx();
@@ -76,22 +86,25 @@ const makeMove = (row, col) => {
     if(boardChecked === -1) {
       if(isBoardFull()) {
         nextMove = false;
-        alert("empate"); //fix: enunciar el empate de mejor manera.
+        alert("empate"); //fix: anunciar el empate de mejor manera.
+        cleanBoard();
       } else {
         isCircleOrEx = (isCircleOrEx) ? false : true;
       }
     } else {
       nextMove = false;
-      alert(`Ganó el jugador ${boardChecked}`); //fix: enunciar al ganador de mejor manera
+      alert(`Ganó el jugador ${boardChecked}`); //fix: anunciar al ganador de mejor manera
+      cleanBoard();
     }
   }
 
   drawBoard();
 };
 
+
 const drawBoard = () => {
   const htmlBoard = document.getElementsByClassName("board")[0];
-  htmlBoard.innerHTML = "";
+  htmlBoard.innerHTML = ""; 
 
   board.forEach((row, i) => {
     row.forEach((col, j) => {
