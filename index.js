@@ -30,10 +30,10 @@ const circleOrEx = () => {
 
 // Función manejadora que inicializa la variable isCircleOrEx.
 const setInitialFigure = (e) => {
-  if(e.target.matches(".figure__circle")) {
+  if(e.target.matches("#figure__circle")) {
     isCircleOrEx = true;
     document.getElementById("figure").classList.add("none");
-  } else if (e.target.matches(".figure__ex")) {
+  } else if (e.target.matches("#figure__ex")) {
     isCircleOrEx = false;
     document.getElementById("figure").classList.add("none");
   }
