@@ -1,6 +1,17 @@
+@use "../tools/vars" as v;
+@use "../tools/mixins" as mix;
+
 .board {
+  @include mix.flex(row, center, center);
+  height: 100vh;
+  font-size: map-get(v.$font-size, "board");
+  text-align: center;
+  line-height: map-get(v.$line-height, "board");
+  color: map-get(v.$colors, "primary");
+  background-color: map-get(v.$colors, "secondary");
+
   &__cell {
     height: 200px;
-    border: 4px solid #000;
+    border: 4px solid map-get(v.$colors, "primary");
   }
 }

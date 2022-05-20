@@ -34,9 +34,21 @@ img {
   gap: 1.5rem;
 }
 
+.board {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 8rem;
+  text-align: center;
+  line-height: 1.55;
+  color: #5b1f00;
+  background-color: #9a5833;
+}
 .board__cell {
   height: 200px;
-  border: 4px solid #000;
+  border: 4px solid #5b1f00;
 }
 
 .modal {
