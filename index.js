@@ -130,7 +130,7 @@ const makeMove = (row, col) => {
 
 
 const drawBoard = () => {
-  const htmlBoard = document.getElementsByClassName("board")[0];
+  const htmlBoard = document.getElementsByClassName("board__container")[0];
   htmlBoard.innerHTML = ""; 
 
   board.forEach((row, i) => {
