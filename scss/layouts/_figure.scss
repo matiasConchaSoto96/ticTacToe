@@ -1,3 +1,4 @@
+@use "../tools/vars" as v;
 @use "../tools/mixins" as mix;
 @use "../tools/placeholders";
 
@@ -11,11 +12,11 @@
     background-color: #0007;
   }
 
-  &__circle {
-
-  }
-
-  &__ex {
-
+  &__btn {
+    width: 20%;
+    font-weight: bold;
+    font-size: map-get(v.$font-size, "btn-figure");
+    text-align: center;
+    line-height: map-get(v.$line-height, "btn");
   }
 }
