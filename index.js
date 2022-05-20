@@ -43,7 +43,7 @@ htmlFigureContainer.addEventListener("click", setInitialFigure);
 
 // Función manejadora que anuncia al ganador y pregunta si quieres jugar de nuevo
 const playAgain = (e) => {
-  if(e.target.matches(".end-game__btn")) {
+  if(e.target.matches("#end-game__play")) {
     htmlEndGame.classList.add("none");
     document.getElementById("figure").classList.remove("none");
     cleanBoard();
