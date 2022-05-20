@@ -10,8 +10,11 @@ const htmlFigureContainer = document.getElementById("figure__container");
 const htmlEndGame = document.getElementById("end-game");
 let board = initBoard();
 
+// Variable que indica la figura del jugador actual
+let currentPlayerFigure = "O";
+
 // Variable que indica el jugador que está jugando actualmente
-let currentPlayer = "O";
+let currentPlayerNumber = 1;
 
 // Para qué sirve?
 let nextMove = true;
@@ -20,12 +23,12 @@ let isCircleOrEx;
 // Función que asigna la figura correcta al jugador actual.
 const circleOrEx = () => {
   if(isCircleOrEx) {
-    currentPlayer = "O"
+    currentPlayerFigure = "O"
   } else {
-    currentPlayer = "X"
+    currentPlayerFigure = "X"
   }
 
-  return currentPlayer;
+  return currentPlayerFigure;
 }
 
 // Función manejadora que inicializa la variable isCircleOrEx.
@@ -38,6 +41,7 @@ const setInitialFigure = (e) => {
     document.getElementById("figure").classList.add("none");
   }
 };
+
 
 htmlFigureContainer.addEventListener("click", setInitialFigure);
 
@@ -114,13 +118,16 @@ const makeMove = (row, col) => {
       if(isBoardFull()) {
         nextMove = false;
         document.getElementById("end-game__text").innerHTML = "Empate";
+        currentPlayerNumber = 1;
         htmlEndGame.classList.remove("none");
       } else {
         isCircleOrEx = (isCircleOrEx) ? false : true;
+        currentPlayerNumber = (currentPlayerNumber === 1) ? currentPlayerNumber = 2 : currentPlayerNumber = 1;
       }
     } else {
       nextMove = false;
-      document.getElementById("end-game__text").innerHTML = `Felicidades jugador ${boardChecked} has ganado!!!`;
+      document.getElementById("end-game__text").innerHTML = `Felicidades jugador ${currentPlayerNumber} has ganado!!!`;
+      currentPlayerNumber = 1;
       htmlEndGame.classList.remove("none");
     }
   }
